@@ -144,4 +144,4 @@ def github(publish_drafts=False, dns=False):
         pass
 
     local('ghp-import -m "(updated): site updated" output')
-    local('git push origin gh-pages')
+    local('git push origin gh-pages:master')
