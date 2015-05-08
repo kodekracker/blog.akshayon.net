@@ -55,3 +55,12 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# cache folder
+cache/
+
+# process id file
+*.pid
+
+# output folder
+output/
