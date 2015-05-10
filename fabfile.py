@@ -77,13 +77,15 @@ def publish():
 # A code to create entry page for new post
 TEMPLATE = """
 Title: {title}
+Menulabel: {title}
 Date: {year}-{month}-{day} {hour}:{minute:02d}
-Tags:
+Modified: {year}-{month}-{day} {hour}:{minute:02d}
 Category:
+Tags:
 Slug: {slug}
-Summary:
+Author:
 Status: draft
-
+Summary:
 
 """
 
@@ -112,7 +114,7 @@ def live_build(port=8080):
     local('make html')
     os.chdir('output')
     server = livereload.Server()
-    server.watch('../content/*.md',
+    server.watch('../content/',
         livereload.shell('pelican -s ../pelicanconf.py -o ../output'))
     server.watch('../../pelican-bootstrap3/',
         livereload.shell('pelican -s ../pelicanconf.py -o ../output'))
@@ -129,8 +131,14 @@ def enter_dns_file(DNS=None):
     with open('output/CNAME', 'w') as f:
         f.write(DNS)
 
-# push to github pages
-def github(publish_drafts=False, dns=False):
+# publish to github pages
+def publish_github(publish_drafts=False, dns=None):
+
+    # clean the DEPLOY_PATH
+    clean()
+
+    # create output for publish
+    local('pelican -s publishconf.py')
 
     try:
         if os.path.exists('output/drafts'):
@@ -138,10 +146,13 @@ def github(publish_drafts=False, dns=False):
                 local('rm -rf output/drafts')
 
         if dns:
-            enter_dns_file('')
+            enter_dns_file(dns)
 
     except Exception:
         pass
 
     local('ghp-import -m "(updated): site updated" output')
     local('git push origin gh-pages:master')
+
+    # clean the DEPLOY_PATH
+    clean()

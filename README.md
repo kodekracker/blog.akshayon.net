@@ -12,9 +12,12 @@ My Personal Portfolio and Blog Website
     $ fab live_build
   ```
   
-3. To push content to gh-pages
+3. To publish content to gh-pages
   ```shell
-    $ fab push
+    $ fab publish_github
     OR
-    $ fab push:publish_drafts=False,dns=False
+    $ fab publish_github:publish_drafts=False,dns=False
   ```
+  **Note:** 
+  * To publish drafts also, put `publish_drafts=True `
+  * To host github pages on custom pages, put `dns='ip-address'`
