@@ -151,8 +151,8 @@ def publish_github(publish_drafts=False, dns=None):
     except Exception:
         pass
     local('cp .gitignore output/')
-    local('ghp-import -m "(updated): site updated" output')
-    local('git push origin gh-pages:master')
+    local('ghp-import -m "(updated): site updated"  -b master output')
+    local('git push origin master:master')
 
     # clean the DEPLOY_PATH
     clean()
