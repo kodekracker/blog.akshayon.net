@@ -132,7 +132,7 @@ def enter_dns_file(DNS=None):
         f.write(DNS)
 
 # publish to github pages
-def publish_github(publish_drafts=False, dns=None):
+def publish_github(publish_drafts=False, dns='akshayon.net'):
 
     # clean the DEPLOY_PATH
     clean()
@@ -151,6 +151,7 @@ def publish_github(publish_drafts=False, dns=None):
     except Exception:
         pass
     local('cp .gitignore output/')
+    local('cp LICENSE output/')
     local('ghp-import -m "(updated): site updated"  -b master output')
     local('git push origin master:master')
 
