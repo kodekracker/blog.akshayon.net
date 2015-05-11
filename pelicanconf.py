@@ -6,7 +6,7 @@ import os
 # Basic Settings
 AUTHOR = u'Akshay Pratap Singh'
 SITENAME = u'#kodekracker'
-SITEURL = 'http://kodekracker.github.io'
+SITEURL = 'http://akshayon.net'
 
 # path to content directory
 PATH = 'content'
