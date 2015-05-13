@@ -119,7 +119,7 @@ DISPLAY_ARTICLE_INFO_ON_INDEX = True
 ABOUT_ME = 'Data Science Enthusiast, Web Developer and Programmer'
 
 # show avatar on side bar
-AVATAR = "../images/profile-pic.jpeg"
+AVATAR = "images/profile.jpeg"
 
 # Set the banner image Ex:- BANNER = '/path/to/banner.png'
 # BANNER = '/path/to/banner.png'
