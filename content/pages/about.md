@@ -1,4 +1,7 @@
 Title: About
+sortorder: 1
+
+###Hello, my name is Akshay Pratap Singh.
 
 Web Developer/Designer proficient in a wide variety of web applications and also Data Science enthusiast. Specially interested in web development using Python, Javascript , Angular , Mongodb 
 and also in Data Science related projects of Data Mining, Data Analysis & Machine Learning. 

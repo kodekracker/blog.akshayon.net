@@ -37,7 +37,9 @@ RELATIVE_URLS = True
 
 PLUGIN_PATHS = ['../Pelican/pelican-plugins']
 PLUGINS = ['gravatar', 'related_posts', 'series','tipue_search']
-STATIC_PATHS = ['images', 'pdfs']
+STATIC_PATHS = ['images','static']
+
+PAGE_ORDER_BY = 'sortorder'
 
 ## Pelican Bootstrap 3 Theme
 ## Template Settings
@@ -65,7 +67,7 @@ SHOW_ARTICLE_CATEGORY = True
 SHOW_DATE_MODIFIED = True
 
 # add custom css to the theme Ex:- CUSTOM_CSS = 'static/custom.css'
-CUSTOM_CSS = ''
+CUSTOM_CSS = 'static/css/custom.css'
 
 # code syntax highlighting style
 PYGMENTS_STYLE = "tango"
