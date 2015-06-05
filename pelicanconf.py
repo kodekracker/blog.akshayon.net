@@ -53,6 +53,11 @@ DISPLAY_CATEGORIES_ON_MENU = False
 # add menu on top bar Ex:- MENUITEMS = [('XYZ','http://xyz.com')]
 MENUITEMS = []
 
+OTHERITEMS = [('Technoclinic Blog','http://technoclinic.akshayon.net'),
+            ('Tumblr Blog', 'http://tumblr.akshayon.net'),
+            ('Movies Listing','http://movies.akshayon.net')
+            ]
+
 # set bootswatch theme
 # Bootswatch(http://bootswatch.com/), Free themes for Bootstrap
 BOOTSTRAP_THEME = "flatly"
@@ -121,7 +126,7 @@ DISPLAY_ARTICLE_INFO_ON_INDEX = True
 ABOUT_ME = 'Data Science Enthusiast, Web Developer and Programmer'
 
 # show avatar on side bar
-AVATAR = "images/profile.jpeg"
+AVATAR = "http://www.gravatar.com/avatar/aa4b3d8ae62113905ea0e761c7f60245?size=350"
 
 # Set the banner image Ex:- BANNER = '/path/to/banner.png'
 # BANNER = '/path/to/banner.png'

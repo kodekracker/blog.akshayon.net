@@ -1,8 +1,12 @@
-Title: My First Post
-Date: 2014-12-13 18:32
-Category: geek
-Tags: computer,geek
-Series: series1
+Title: Get Familiar with Pelican
+Menulabel: Get Familiar with Pelican
+Date: 2015-6-5 1:24
+Modified: 2015-6-5 1:24
+Category: python
+Tags: pelican,generator,python
+Slug: get-familiar-with-pelican
+Author: Akshay Pratap Singh
+Summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper urna id ante bibendum, ac accumsan mauris lacinia. Donec imperdiet fermentum purus vitae fermentum. Maecenas quis commodo urna. In eget tortor a metus vestibulum rhoncus. Nullam eu pellentesque velit, porta vehicula lacus. Vivamus rutrum convallis nulla vel rutrum. Phasellus malesuada interdum diam, vel tristique libero congue vitae. Sed a orci tellus. Morbi quis malesuada metus.
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper urna id ante bibendum, ac accumsan mauris lacinia. Donec imperdiet fermentum purus vitae fermentum. Maecenas quis commodo urna. In eget tortor a metus vestibulum rhoncus. Nullam eu pellentesque velit, porta vehicula lacus. Vivamus rutrum convallis nulla vel rutrum. Phasellus malesuada interdum diam, vel tristique libero congue vitae. Sed a orci tellus. Morbi quis malesuada metus.
 
