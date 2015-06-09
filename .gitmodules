@@ -1,0 +1,3 @@
+[submodule "theme/pelican-bootstrap3"]
+	path = theme/pelican-bootstrap3
+	url = git@github.com:KodeKracker/pelican-bootstrap3.git

@@ -126,11 +126,6 @@ def live_build(port=8080):
         livereload.shell('pelican -s ../pelicanconf.py -o ../output'))
     server.serve(liveport=35729, port=port)
 
-# enter DNS File
-def enter_dns_file(DNS=None):
-    with open('output/CNAME', 'w') as f:
-        f.write(DNS)
-
 # publish to github pages
 def publish_github(publish_drafts=False, dns='akshayon.net'):
 
@@ -144,10 +139,6 @@ def publish_github(publish_drafts=False, dns='akshayon.net'):
         if os.path.exists('output/drafts'):
             if not publish_drafts:
                 local('rm -rf output/drafts')
-
-        if dns:
-            enter_dns_file(dns)
-
     except Exception:
         pass
     local('cp .gitignore output/')

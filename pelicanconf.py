@@ -11,8 +11,26 @@ SITEURL = 'http://akshayon.net'
 # path to content directory
 PATH = 'content'
 
+ARTICLE_URL = 'posts/{date:%Y}/{date:%m}/{date:%d}/{slug}'
+ARTICLE_SAVE_AS = 'posts/{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
+
+DRAFT_URL = 'drafts/{slug}'
+DRAFT_SAVE_AS = 'drafts/{slug}.html'
+
+PAGE_URL = 'pages/{slug}'
+PAGE_SAVE_AS = 'pages/{slug}/index.html'
+
+CATEGORY_URL = 'category/{slug}'
+CATEGORY_SAVE_AS = 'category/{slug}/index.html'
+
+TAG_URL = 'tag/{slug}'
+TAG_SAVE_AS = 'tag/{slug}/index.html'
+
+AUTHOR_URL = 'author/{slug}'
+AUTHOR_SAVE_AS = 'author/{slug}/index.html'
+
 # set theme
-THEME = "../pelican-bootstrap3"
+THEME = "theme/pelican-bootstrap3"
 
 # set timezone
 TIMEZONE = 'Asia/Kolkata'
@@ -36,10 +54,16 @@ DEFAULT_PAGINATION = 5
 RELATIVE_URLS = True
 
 PLUGIN_PATHS = ['../Pelican/pelican-plugins']
-PLUGINS = ['gravatar', 'related_posts', 'series','tipue_search']
+PLUGINS = ['gravatar', 'tipue_search']
 STATIC_PATHS = ['images','static']
 
+EXTRA_PATH_METADATA = {
+    'extra/CNAME': {'path': 'CNAME'}
+}
+
 PAGE_ORDER_BY = 'sortorder'
+
+
 
 ## Pelican Bootstrap 3 Theme
 ## Template Settings
@@ -53,7 +77,7 @@ DISPLAY_CATEGORIES_ON_MENU = False
 # add menu on top bar Ex:- MENUITEMS = [('XYZ','http://xyz.com')]
 MENUITEMS = []
 
-OTHERITEMS = [('Technoclinic Blog','http://technoclinic.akshayon.net'),
+DROPDOWNITEMS = [('Technoclinic Blog','http://technoclinic.akshayon.net'),
             ('Tumblr Blog', 'http://tumblr.akshayon.net'),
             ('Movies Listing','http://movies.akshayon.net')
             ]
