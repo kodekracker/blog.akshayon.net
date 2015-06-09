@@ -55,7 +55,7 @@ RELATIVE_URLS = True
 
 PLUGIN_PATHS = ['../Pelican/pelican-plugins']
 PLUGINS = ['gravatar', 'tipue_search']
-STATIC_PATHS = ['images','static']
+STATIC_PATHS = ['images','static','extra']
 
 EXTRA_PATH_METADATA = {
     'extra/CNAME': {'path': 'CNAME'}
