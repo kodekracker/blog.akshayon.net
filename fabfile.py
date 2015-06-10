@@ -127,7 +127,7 @@ def live_build(port=8080):
     server.serve(liveport=35729, port=port)
 
 # publish to github pages
-def publish_github(publish_drafts=False, dns='akshayon.net'):
+def publish_github(publish_drafts=False):
 
     # clean the DEPLOY_PATH
     clean()
@@ -141,10 +141,7 @@ def publish_github(publish_drafts=False, dns='akshayon.net'):
                 local('rm -rf output/drafts')
     except Exception:
         pass
-    local('cp .gitignore output/')
-    local('cp LICENSE output/')
-    local('ghp-import -m "(updated): site updated"  -b master output')
-    local('git push origin master:master')
+    local('ghp-import -pm "(updated): site updated" output')
 
     # clean the DEPLOY_PATH
     clean()
