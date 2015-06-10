@@ -93,7 +93,7 @@ Summary:
 def new_post(title):
     today = datetime.today()
     slug = title.lower().strip().replace(' ', '-')
-    f_create = "content/posts/{}_{:0>2}_{:0>2}_{}.md".format(
+    f_create = "content/posts/{}-{:0>2}-{:0>2}-{}.md".format(
         today.year, today.month, today.day, slug)
     t = TEMPLATE.strip().format(title=title,
                                 hashes='#' * len(title),

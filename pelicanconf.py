@@ -6,7 +6,7 @@ import os
 # Basic Settings
 AUTHOR = u'Akshay Pratap Singh'
 SITENAME = u'#kodekracker'
-SITEURL = 'http://akshayon.net'
+SITEURL = 'http://blog.akshayon.net'
 
 # path to content directory
 PATH = 'content'
@@ -62,7 +62,7 @@ EXTRA_PATH_METADATA = {
 }
 
 PAGE_ORDER_BY = 'sortorder'
-
+SITESUBTITLE = "aksjdsjdsfsd"
 
 
 ## Pelican Bootstrap 3 Theme

@@ -1,5 +1,6 @@
-# kodekracker.github.io
-My Personal Portfolio and Blog Website
+blog.akshayon.net
+==========================
+This is my blog, which is developed using *[pelican](http://blog.getpelican.com/)* blog-generator.This blog is hosted on sub-domain named as [http://blog.akshayon.net](http://blog.akshayon.net).
 
 ## Instructions
 1. To create new post
@@ -16,8 +17,7 @@ My Personal Portfolio and Blog Website
   ```shell
     $ fab publish_github
     OR
-    $ fab publish_github:publish_drafts=False,dns=False
+    $ fab publish_github:publish_drafts=False
   ```
   **Note:** 
   * To publish drafts also, put `publish_drafts=True `
-  * To host github pages on custom pages, put `dns='ip-address'`
