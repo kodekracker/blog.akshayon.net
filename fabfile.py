@@ -116,7 +116,7 @@ def live_build(port=8080):
     server = livereload.Server()
     server.watch('../content/',
         livereload.shell('pelican -s ../pelicanconf.py -o ../output'))
-    server.watch('../../pelican-bootstrap3/',
+    server.watch('../theme/pelican-bootstrap3/',
         livereload.shell('pelican -s ../pelicanconf.py -o ../output'))
     server.watch('*.html')
     server.watch('*.css')

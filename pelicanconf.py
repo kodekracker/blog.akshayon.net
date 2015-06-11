@@ -166,7 +166,9 @@ SOCIAL = (('Facebook', 'https://www.facebook.com/AKSHAYPRATAP007'),
           ('Twitter', 'https://twitter.com/KodeKracker'),
           ('Google+','https://plus.google.com/+AkshayPratap_01'),
           ('Linkedin','https://in.linkedin.com/in/akshaypratapsingh'),
-          ('Github','https://github.com/KodeKracker/'))
+          ('Github','https://github.com/KodeKracker/'),
+          ('LastFm', 'http://www.last.fm/user/AKSHAYPRATAP007'),
+          ('Stack-Overflow', 'https://careers.stackoverflow.com/kodekracker'))
 
 # show tags on sidebar
 # DISPLAY_TAGS_ON_SIDEBAR = False
