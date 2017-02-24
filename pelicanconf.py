@@ -2,11 +2,12 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 import os
+import sys
 
 # Basic Settings
 AUTHOR = u'Akshay Pratap Singh'
 SITENAME = u'#kodekracker'
-SITEURL = 'http://blog.akshayon.net'
+SITEURL = 'http://localhost:8080'
 
 # path to content directory
 PATH = 'content'
@@ -28,6 +29,8 @@ TAG_SAVE_AS = 'tag/{slug}/index.html'
 
 AUTHOR_URL = 'author/{slug}'
 AUTHOR_SAVE_AS = 'author/{slug}/index.html'
+
+ARCHIVES_SAVE_AS = 'archives.html'
 
 # set theme
 THEME = "theme/pelican-bootstrap3"
@@ -53,8 +56,13 @@ DEFAULT_PAGINATION = 5
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 
-PLUGIN_PATHS = ['../Pelican/pelican-plugins']
-PLUGINS = ['gravatar', 'tipue_search']
+try:
+    PLUGIN_PATHS = [os.environ["PELICAN_PLUGINS_PATH"]]
+except KeyError:
+   print "==> Please set the environment variable PELICAN_PLUGINS_PATH"
+   sys.exit(1)
+
+PLUGINS = ['gravatar', 'tipue_search', 'i18n_subsites']
 STATIC_PATHS = ['images','static','extra']
 
 EXTRA_PATH_METADATA = {
@@ -63,6 +71,10 @@ EXTRA_PATH_METADATA = {
 
 PAGE_ORDER_BY = 'sortorder'
 SITESUBTITLE = "aksjdsjdsfsd"
+
+JINJA_ENVIRONMENT = {
+    'extensions': ['jinja2.ext.i18n'],
+}
 
 
 ## Pelican Bootstrap 3 Theme
@@ -77,10 +89,8 @@ DISPLAY_CATEGORIES_ON_MENU = False
 # add menu on top bar Ex:- MENUITEMS = [('XYZ','http://xyz.com')]
 MENUITEMS = []
 
-DROPDOWNITEMS = [('Technoclinic Blog','http://technoclinic.akshayon.net'),
-            ('Tumblr Blog', 'http://tumblr.akshayon.net'),
-            ('Movies Listing','http://movies.akshayon.net')
-            ]
+DROPDOWNITEMS = [('Tumblr Blog', 'http://tumblr.akshayon.net'),
+            ('Movies Listing','http://movies.akshayon.net')]
 
 # set bootswatch theme
 # Bootswatch(http://bootswatch.com/), Free themes for Bootstrap
@@ -108,7 +118,7 @@ USE_PAGER = True
 BOOTSTRAP_FLUID = False
 
 # set logo for your site Ex:- SITELOGO = 'images/my_site_logo.png'
-SITELOGO = ''
+# SITELOGO = ''
 
 # set logo height and width will be set accordingly
 # SITELOGO_SIZE =
@@ -120,7 +130,7 @@ HIDE_SITENAME = False
 DISPLAY_BREADCRUMBS = True
 
 # show article category in the breadcrumbs
-DISPLAY_CATEGORY_IN_BREADCRUMBS = True
+DISPLAY_CATEGORY_IN_BREADCRUMBS = False
 
 # use the inverse navbar from Bootstrap
 BOOTSTRAP_NAVBAR_INVERSE = True
@@ -147,10 +157,10 @@ FAVICON = 'images/favicon.ico'
 DISPLAY_ARTICLE_INFO_ON_INDEX = True
 
 # show about text on side bar
-ABOUT_ME = 'Data Science Enthusiast, Web Developer and Programmer'
+ABOUT_ME = 'Software Developer and Data Science Enthusiast'
 
 # show avatar on side bar
-AVATAR = "http://www.gravatar.com/avatar/aa4b3d8ae62113905ea0e761c7f60245?size=350"
+AVATAR = "images/profile.jpeg"
 
 # Set the banner image Ex:- BANNER = '/path/to/banner.png'
 # BANNER = '/path/to/banner.png'
@@ -162,22 +172,22 @@ AVATAR = "http://www.gravatar.com/avatar/aa4b3d8ae62113905ea0e761c7f60245?size=3
 # BANNER_ALL_PAGES = True
 
 # Social widget
-SOCIAL = (('Facebook', 'https://www.facebook.com/AKSHAYPRATAP007'),
-          ('Twitter', 'https://twitter.com/KodeKracker'),
+SOCIAL = (('Facebook', 'https://www.facebook.com/spratapakshay'),
+          ('Twitter', 'https://twitter.com/spratapakshay'),
           ('Google+','https://plus.google.com/+AkshayPratap_01'),
-          ('Linkedin','https://in.linkedin.com/in/akshaypratapsingh'),
+          ('Linkedin','https://in.linkedin.com/in/spratapakshay'),
           ('Github','https://github.com/KodeKracker/'),
           ('LastFm', 'http://www.last.fm/user/AKSHAYPRATAP007'),
           ('Stack-Overflow', 'https://careers.stackoverflow.com/kodekracker'))
 
 # show tags on sidebar
-# DISPLAY_TAGS_ON_SIDEBAR = False
+DISPLAY_TAGS_ON_SIDEBAR = False
 
 # display the tags inline
 DISPLAY_TAGS_INLINE = True
 
 # show category on sidebar
-# DISPLAY_CATEGORIES_ON_SIDEBAR = True
+DISPLAY_CATEGORIES_ON_SIDEBAR = True
 
 # show recent post on sidebar
 # DISPLAY_RECENT_POSTS_ON_SIDEBAR = True
@@ -237,7 +247,7 @@ TWITTER_CARDS = True
 USE_OPEN_GRAPH = True
 
 # set Twitter Account Username
-TWITTER_USERNAME = 'kodekracker'
+TWITTER_USERNAME = 'spratapakshay'
 
 # set Twitter Widget ID for Twitter Timeline
 TWITTER_WIDGET_ID = os.getenv('TWITTER_WIDGET_ID',None)
@@ -257,4 +267,3 @@ SHARIFF_TWITTER_VIA = True # False
 
 # for Tipue Search
 DIRECT_TEMPLATES = ('index', 'categories', 'authors', 'archives', 'search')
-

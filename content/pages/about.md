@@ -1,10 +1,9 @@
 Title: About
 sortorder: 1
 
-###Hello, my name is Akshay Pratap Singh.
+### Hello,I am Akshay Pratap Singh.
 
-Web Developer/Designer proficient in a wide variety of web applications and also Data Science enthusiast. Specially interested in web development using Python, Javascript , Angular , Mongodb 
-and also in Data Science related projects of Data Mining, Data Analysis & Machine Learning. 
+Software Developer proficient in a wide variety of web applications and also Data Science enthusiast. Specially interested in web development using Python, Javascript , ReactJs, AngularJS , Mongodb and also in Data Science related projects of Data Mining, Data Analysis & Machine Learning.
 
 I am good in competitive programming. Our team named as "StarX" qualified three times for ACM-ICPC Regional Round (2012,2013,2014) .I also completed an online course of Machine Learning powered by Stanford University under the guidance of course mentor Andrew Ng, Associate Professor in Stanford University on coursera.org .I also have experiencing of Big Data Analysis Tools like Apache Spark, Hadoop... etc.
 
@@ -14,3 +13,4 @@ I am all time ready to take challenges as i have keen interest in solving challe
 
 * Handle Name : **code_crack_01**
 * Username  :  **KodeKracker**
+* Social Username : **spratapakshay**

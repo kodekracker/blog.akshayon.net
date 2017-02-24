@@ -1,30 +1,17 @@
-from fabric.api import *
-import fabric.contrib.project as project
 import os
 import sys
-import SimpleHTTPServer
-import SocketServer
-import livereload
+from fabric.api import local
+from livereload import Server
 from datetime import datetime
 
 # Local path configuration (can be absolute or relative to fabfile)
-env.deploy_path = 'output'
-DEPLOY_PATH = env.deploy_path
-
-# Remote server configuration
-production = 'root@localhost:22'
-dest_path = '/var/www'
-
-# Rackspace Cloud Files configuration settings
-env.cloudfiles_username = 'my_rackspace_username'
-env.cloudfiles_api_key = 'my_rackspace_api_key'
-env.cloudfiles_container = 'my_cloudfiles_container'
-
+DEPLOY_PATH = 'output'
+DEFAULT_PORT = 8080
 
 def clean():
     if os.path.isdir(DEPLOY_PATH):
-        local('rm -rf {deploy_path}'.format(**env))
-        local('mkdir {deploy_path}'.format(**env))
+        local('rm -rf {deploy_path}'.format(deploy_path=DEPLOY_PATH))
+        local('mkdir {deploy_path}'.format(deploy_path=DEPLOY_PATH))
 
 def build():
     local('pelican -s pelicanconf.py')
@@ -33,46 +20,25 @@ def rebuild():
     clean()
     build()
 
-def regenerate():
+def reload():
     local('pelican -r -s pelicanconf.py')
 
-def serve():
-    os.chdir(env.deploy_path)
-
-    PORT = 8000
-    class AddressReuseTCPServer(SocketServer.TCPServer):
-        allow_reuse_address = True
-
-    server = AddressReuseTCPServer(('', PORT), SimpleHTTPServer.SimpleHTTPRequestHandler)
-
-    sys.stderr.write('Serving on port {0} ...\n'.format(PORT))
-    server.serve_forever()
-
-def reserve():
-    build()
-    serve()
-
-def preview():
-    local('pelican -s publishconf.py')
-
-def cf_upload():
-    rebuild()
-    local('cd {deploy_path} && '
-          'swift -v -A https://auth.api.rackspacecloud.com/v1.0 '
-          '-U {cloudfiles_username} '
-          '-K {cloudfiles_api_key} '
-          'upload -c {cloudfiles_container} .'.format(**env))
-
-@hosts(production)
 def publish():
     local('pelican -s publishconf.py')
-    project.rsync_project(
-        remote_dir=dest_path,
-        exclude=".DS_Store",
-        local_dir=DEPLOY_PATH.rstrip('/') + '/',
-        delete=True,
-        extra_opts='-c',
-    )
+
+def serve(port=DEFAULT_PORT):
+    server = Server()
+    server.serve(host='localhost', port=port, root=DEPLOY_PATH)
+
+# livereload
+def live_serve(port=DEFAULT_PORT):
+    rebuild()
+    server = Server()
+    server.watch('content/', build)
+    server.watch('theme/pelican-bootstrap3/', build)
+    server.watch('pelicanconf.py', build)
+    server.watch('publishconf.py',build)
+    server.serve(host='localhost', port=port, root=DEPLOY_PATH)
 
 # A code to create entry page for new post
 TEMPLATE = """
@@ -93,8 +59,8 @@ Summary:
 def new_post(title):
     today = datetime.today()
     slug = title.lower().strip().replace(' ', '-')
-    f_create = "content/posts/{}-{:0>2}-{:0>2}-{}.md".format(
-        today.year, today.month, today.day, slug)
+    post_file = "content/posts/{}-{:0>2}-{:0>2}-{}.md".format(today.year,
+                                                              today.month, today.day, slug)
     t = TEMPLATE.strip().format(title=title,
                                 hashes='#' * len(title),
                                 year=today.year,
@@ -103,38 +69,14 @@ def new_post(title):
                                 hour=today.hour,
                                 minute=today.minute,
                                 slug=slug)
-    with open(f_create, 'w') as w:
+    with open(post_file, 'w') as w:
         w.write(t)
-    print("File created -> " + f_create)
-
-# livereload
-def live_build(port=8080):
-
-    local('make clean')
-    local('make html')
-    os.chdir('output')
-    server = livereload.Server()
-    server.watch('../content/',
-        livereload.shell('pelican -s ../pelicanconf.py -o ../output'))
-    server.watch('../theme/pelican-bootstrap3/',
-        livereload.shell('pelican -s ../pelicanconf.py -o ../output'))
-    server.watch('*.html')
-    server.watch('*.css')
-    server.watch('../pelicanconf.py',
-        livereload.shell('pelican -s ../pelicanconf.py -o ../output'))
-    server.watch('../publishconf.py',
-        livereload.shell('pelican -s ../pelicanconf.py -o ../output'))
-    server.serve(liveport=35729, port=port)
+    print("Post file created => " + post_file)
 
 # publish to github pages
 def publish_github(publish_drafts=False):
-
-    # clean the DEPLOY_PATH
     clean()
-
-    # create output for publish
-    local('pelican -s publishconf.py')
-
+    publish()
     try:
         if os.path.exists('output/drafts'):
             if not publish_drafts:
@@ -142,6 +84,3 @@ def publish_github(publish_drafts=False):
     except Exception:
         pass
     local('ghp-import -pm "(updated): site updated" output')
-
-    # clean the DEPLOY_PATH
-    clean()
