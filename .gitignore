@@ -67,3 +67,5 @@ output/
 
 # sample folder
 sample/
+
+.vscode/
