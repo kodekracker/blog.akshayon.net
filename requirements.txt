@@ -3,3 +3,4 @@ Fabric==1.13.1
 livereload==2.5.1
 Markdown==2.6.8
 pelican==3.7.1
+ghp-import==0.4.1
